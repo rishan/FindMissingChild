@@ -7,22 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/splash"
     tools:context=".activities.MainActivity"
     tools:showIn="@layout/activity_main">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="OPEN CAMERA"
-            android:id="@+id/open_camera"/>
-
-        <ImageView android:id="@+id/imageView1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-        </ImageView>
         <android.support.v7.widget.RecyclerView
             android:layout_width="wrap_content"
             android:layout_height="200dp"

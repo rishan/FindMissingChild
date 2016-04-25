@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FindMissingChild</string>
+    <string name="childDetailsPageTitle">Missing Child Info</string>
 </resources>
