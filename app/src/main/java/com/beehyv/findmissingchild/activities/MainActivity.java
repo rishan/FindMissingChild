@@ -13,10 +13,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.beehyv.findmissingchild.R;
@@ -26,11 +29,14 @@ import com.beehyv.findmissingchild.adapters.ImageAdapter;
 import com.beehyv.findmissingchild.pojos.ObjectDrawerItem;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 
 public class MainActivity extends AppCompatActivity implements ImageAdapter.interactionInterface {
     private static final int CAMERA_REQUEST = 100;
     private RecyclerView recyclerView;
+    private EditText name;
+    private EditText missingFrom;
     private ArrayList<Bitmap> imageList=new ArrayList<>();
     private ImageAdapter imageAdapter;
     private String[] listOptions;
@@ -104,6 +110,10 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         mTitle = mDrawerTitle = getTitle();
 
         //Form
+        name=(EditText)findViewById(R.id.name);
+        missingFrom=(EditText)findViewById(R.id.missing_from);
+
+        //Gender Selection
         //gender true=male
         boolean gender=true;
         LinearLayout genderMale=(LinearLayout)findViewById(R.id.gender_male);
@@ -131,19 +141,34 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
             }
         });
 
+        //Age Range Selection
+        Spinner age= (Spinner)findViewById(R.id.age);
+        ArrayAdapter<CharSequence> ageAdapter = ArrayAdapter.createFromResource(this,
+                R.array.age_options, R.layout.spinner_layout);
+        adapter.setDropDownViewResource(R.layout.dropdown_layout);
+        age.setAdapter(ageAdapter);
+
+
         //on Submitting Form
         Button submit= (Button)findViewById(R.id.form_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Generate Form Object
-                Intent intent=new Intent(getApplicationContext(), UserDetails.class);
-                //intent.putExtra("childDetails",childDetails);
-                startActivity(intent);
+                if(validateForm()) {
+                    //TODO Generate Form Object
+                    Intent intent = new Intent(getApplicationContext(), UserDetails.class);
+                    //intent.putExtra("childDetails",childDetails);
+                    startActivity(intent);
+                }
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView.getLayoutManager().scrollToPosition(imageList.size());
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -179,12 +204,49 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
             imageList.add(photo);
             imageAdapter.notifyDataSetChanged();
         }
+
     }
 
     @Override
     public void loadCamera(){
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
+
+    private boolean validateForm(){
+        boolean nameOK=false;
+        boolean cityOK=false;
+        //Check name field
+        final Pattern namePattern= Pattern.compile("^[a-zA-Z0-9]*$");
+        if(name.getText()!=null) {
+            String nameValue=name.getText().toString().trim();
+            if(nameValue.equals(""))
+                name.setError("City name should not be empty");
+            else if (!namePattern.matcher(nameValue).matches())
+                name.setError("No special characters allowed in city name");
+            else {
+                name.setError(null);
+                nameOK = true;
+            }
+        }
+        //Check City/Town missing from
+
+        if(missingFrom.getText()!=null) {
+            String cityValue=missingFrom.getText().toString().trim();
+            if(cityValue.equals(""))
+                missingFrom.setError("City name should not be empty");
+            else if (!namePattern.matcher(cityValue).matches())
+                missingFrom.setError("No special characters allowed in city name");
+            else {
+                missingFrom.setError(null);
+                cityOK = true;
+            }
+        }
+
+        if(nameOK && cityOK)
+            return true;
+        else
+            return false;
     }
     public boolean isGender() {
         return gender;

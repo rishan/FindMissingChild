@@ -1,5 +1,7 @@
 package com.beehyv.findmissingchild.pojos;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by rishan on 27/4/16.
  */
@@ -11,9 +13,9 @@ public class ChildDetails {
     //gender=true ---> Male
     private boolean gender;
     private String missingFrom;
-    private String[] images;
+    private Bitmap[] images;
 
-    public ChildDetails(String location, String name, String ageRange, boolean gender, String missingFrom, String[] images) {
+    public ChildDetails(String location, String name, String ageRange, boolean gender, String missingFrom, Bitmap[] images) {
         this.location = location;
         this.name = name;
         this.ageRange = ageRange;
@@ -62,11 +64,11 @@ public class ChildDetails {
         this.missingFrom = missingFrom;
     }
 
-    public String[] getImages() {
+    public Bitmap[] getImages() {
         return images;
     }
 
-    public void setImages(String[] images) {
+    public void setImages(Bitmap[] images) {
         this.images = images;
     }
 
