@@ -18,7 +18,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="80dp"
         android:layout_gravity="bottom"
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -40,20 +40,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/intro_indicator_0"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/indicator_unselected" />
 
             <ImageView
                 android:id="@+id/intro_indicator_1"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/indicator_unselected" />
@@ -61,8 +62,8 @@
             <ImageView
                 android:id="@+id/intro_indicator_2"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:background="@drawable/indicator_unselected" />
 
         </LinearLayout>

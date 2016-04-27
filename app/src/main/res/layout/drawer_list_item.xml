@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:paddingRight="10dp" />
+        android:paddingRight="10dp"
+        android:layout_marginRight="20dp"/>
 
     <TextView
         android:id="@+id/textViewName"

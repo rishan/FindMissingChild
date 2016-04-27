@@ -16,4 +16,16 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="ob1text">Whenever you see a child \nOpen the app and take the picture with \na single click.</string>
+    <string name="ob2text">Open your App Camera and \ntake the pictures as quickly as \npossible.</string>
+    <string name="ob3text">Fill up the details and \nsubmit the information and \ndone!</string>
+    <string name="caption">Add a caption...</string>
+    <string name="location">Location</string>
+    <string name="name">Name of the Child</string>
+    <string name="age_range">Age Range</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="missing_from">City/Town missing from</string>
+    <string name="comments">Any Comments (optional)</string>
+    <string name="title_activity_user_details">UserDetails</string>
+    <string name="submit">SUBMIT</string>
 </resources>

@@ -58,6 +58,12 @@ public class PagerActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        //Indicators
+        final ImageView indicator1=(ImageView)findViewById(R.id.intro_indicator_0);
+        final ImageView indicator2=(ImageView)findViewById(R.id.intro_indicator_1);
+        final ImageView indicator3=(ImageView)findViewById(R.id.intro_indicator_2);
+        indicator1.setBackgroundResource(R.drawable.indicator_selected);
+
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -68,6 +74,9 @@ public class PagerActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 //mNextBtn.setVisibility(position == 2 ? View.GONE : View.VISIBLE);
                 mFinishBtn.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
+                indicator1.setBackgroundResource(position == 0? R.drawable.indicator_selected : R.drawable.indicator_unselected);
+                indicator2.setBackgroundResource(position == 1? R.drawable.indicator_selected : R.drawable.indicator_unselected);
+                indicator3.setBackgroundResource(position == 2? R.drawable.indicator_selected : R.drawable.indicator_unselected);
             }
 
             @Override

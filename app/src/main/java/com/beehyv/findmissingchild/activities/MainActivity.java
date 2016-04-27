@@ -13,6 +13,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,11 +39,17 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+    private boolean gender=true;
+    /*
+    *gender=true ---> Male
+    * gender=false ---> Female
+    */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setBackgroundDrawableResource(R.drawable.splash_blurred);
         /*TextView title=(TextView)findViewById(R.id.title);
         title.setText("Find Missing Child");*/
         mTitle = mDrawerTitle = getTitle();
@@ -87,13 +96,54 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         mDrawerList=(ListView)findViewById(R.id.left_drawer);
         ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[2];
 
-        drawerItem[0] = new ObjectDrawerItem(R.drawable.user, listOptions[0]);
-        drawerItem[1] = new ObjectDrawerItem(R.drawable.user, listOptions[1]);
+        drawerItem[0] = new ObjectDrawerItem(R.drawable.add_missing_child, listOptions[0]);
+        drawerItem[1] = new ObjectDrawerItem(R.drawable.added_child_list, listOptions[1]);
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.drawer_list_item, drawerItem);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mTitle = mDrawerTitle = getTitle();
+
+        //Form
+        //gender true=male
+        boolean gender=true;
+        LinearLayout genderMale=(LinearLayout)findViewById(R.id.gender_male);
+        final ImageView maleImage =(ImageView)findViewById(R.id.male_icon);
+        LinearLayout genderFemale=(LinearLayout)findViewById(R.id.gender_female);
+        final ImageView femaleImage =(ImageView)findViewById(R.id.female_icon);
+        genderMale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isGender()==false) {
+                    setGender(true);
+                    femaleImage.setImageResource(R.drawable.female);
+                    maleImage.setImageResource(R.drawable.male_select);
+                }
+            }
+        });
+        genderFemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isGender()==true) {
+                    setGender(false);
+                    femaleImage.setImageResource(R.drawable.female_select);
+                    maleImage.setImageResource(R.drawable.male);
+                }
+            }
+        });
+
+        //on Submitting Form
+        Button submit= (Button)findViewById(R.id.form_submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO Generate Form Object
+                Intent intent=new Intent(getApplicationContext(), UserDetails.class);
+                //intent.putExtra("childDetails",childDetails);
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -135,5 +185,12 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
     public void loadCamera(){
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 }
