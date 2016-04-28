@@ -13,9 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -27,6 +29,7 @@ import com.beehyv.findmissingchild.adapters.DrawerItemClickListener;
 import com.beehyv.findmissingchild.adapters.DrawerItemCustomAdapter;
 import com.beehyv.findmissingchild.adapters.ImageAdapter;
 import com.beehyv.findmissingchild.pojos.ObjectDrawerItem;
+import com.beehyv.findmissingchild.utilities.Utils;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setBackgroundDrawableResource(R.drawable.splash_blurred);
+        setTitle("Missing Child");
+        //exit soft keyboard on clicking outside
+        Utils.setupUI(findViewById(R.id.frame_layout),this);
         /*TextView title=(TextView)findViewById(R.id.title);
         title.setText("Find Missing Child");*/
         mTitle = mDrawerTitle = getTitle();
@@ -100,13 +106,14 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerList=(ListView)findViewById(R.id.left_drawer);
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[2];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[3];
 
         drawerItem[0] = new ObjectDrawerItem(R.drawable.add_missing_child, listOptions[0]);
         drawerItem[1] = new ObjectDrawerItem(R.drawable.added_child_list, listOptions[1]);
+        drawerItem[2] = new ObjectDrawerItem(R.drawable.help, listOptions[2]);
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.drawer_list_item, drawerItem);
         mDrawerList.setAdapter(adapter);
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener(getApplicationContext()));
         mTitle = mDrawerTitle = getTitle();
 
         //Form
@@ -154,12 +161,10 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateForm()) {
-                    //TODO Generate Form Object
-                    Intent intent = new Intent(getApplicationContext(), UserDetails.class);
-                    //intent.putExtra("childDetails",childDetails);
-                    startActivity(intent);
-                }
+                //TODO Generate Form Object
+                Intent intent = new Intent(getApplicationContext(), UserDetails.class);
+                //intent.putExtra("childDetails",childDetails);
+                startActivity(intent);
             }
         });
     }
@@ -195,9 +200,6 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
@@ -211,42 +213,6 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
     public void loadCamera(){
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
-    }
-
-    private boolean validateForm(){
-        boolean nameOK=false;
-        boolean cityOK=false;
-        //Check name field
-        final Pattern namePattern= Pattern.compile("^[a-zA-Z0-9]*$");
-        if(name.getText()!=null) {
-            String nameValue=name.getText().toString().trim();
-            if(nameValue.equals(""))
-                name.setError("City name should not be empty");
-            else if (!namePattern.matcher(nameValue).matches())
-                name.setError("No special characters allowed in city name");
-            else {
-                name.setError(null);
-                nameOK = true;
-            }
-        }
-        //Check City/Town missing from
-
-        if(missingFrom.getText()!=null) {
-            String cityValue=missingFrom.getText().toString().trim();
-            if(cityValue.equals(""))
-                missingFrom.setError("City name should not be empty");
-            else if (!namePattern.matcher(cityValue).matches())
-                missingFrom.setError("No special characters allowed in city name");
-            else {
-                missingFrom.setError(null);
-                cityOK = true;
-            }
-        }
-
-        if(nameOK && cityOK)
-            return true;
-        else
-            return false;
     }
     public boolean isGender() {
         return gender;

@@ -74,6 +74,7 @@ public class PagerActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 //mNextBtn.setVisibility(position == 2 ? View.GONE : View.VISIBLE);
                 mFinishBtn.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
+                mSkipBtn.setVisibility(position == 2 ? View.GONE: View.VISIBLE);
                 indicator1.setBackgroundResource(position == 0? R.drawable.indicator_selected : R.drawable.indicator_unselected);
                 indicator2.setBackgroundResource(position == 1? R.drawable.indicator_selected : R.drawable.indicator_unselected);
                 indicator3.setBackgroundResource(position == 2? R.drawable.indicator_selected : R.drawable.indicator_unselected);

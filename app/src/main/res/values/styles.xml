@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/appLightBlue</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

@@ -57,7 +57,20 @@ public class UserDetails extends AppCompatActivity {
 
             }
         });
+        /*View.OnFocusChangeListener ofcl=new View.OnFocusChangeListener(){
 
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validateForm();
+                }
+            }
+        };
+
+        userName.setOnFocusChangeListener(ofcl);
+        userEmail.setOnFocusChangeListener(ofcl);
+        userPhone.setOnFocusChangeListener(ofcl);
+*/
     }
     private boolean validateForm() {
         boolean nameOK = false;
@@ -66,13 +79,14 @@ public class UserDetails extends AppCompatActivity {
         final Pattern namePattern = Pattern.compile("^[a-zA-Z0-9]*$");
         //TODO check phonePattern regex
         final Pattern phonePattern = Pattern.compile("[0-9]{10}");
-        final Pattern emailPattern = Pattern.compile("/^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/");
+        final Pattern emailPattern = Pattern.compile("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*\n" +
+                "      @[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$", Pattern.CASE_INSENSITIVE);
         if (userName.getText() != null) {
             String nameValue = userName.getText().toString().trim();
             if (nameValue.equals(""))
-                userName.setError("City name should not be empty");
+                userName.setError("Name should not be empty");
             else if (!namePattern.matcher(nameValue).matches())
-                userName.setError("No special characters allowed in city name");
+                userName.setError("No special characters allowed in name");
             else {
                 userName.setError(null);
                 nameOK = true;
@@ -81,9 +95,9 @@ public class UserDetails extends AppCompatActivity {
         if (userPhone.getText() != null) {
             String phoneValue = userPhone.getText().toString().trim();
             if (phoneValue.equals(""))
-                userPhone.setError("City name should not be empty");
+                userPhone.setError("Phone number should not be empty");
             else if (!phonePattern.matcher(phoneValue).matches())
-                userPhone.setError("No special characters allowed in city name");
+                userPhone.setError("Please enter a proper phonenumber");
             else {
                 userPhone.setError(null);
                 phoneOK = true;
@@ -92,9 +106,9 @@ public class UserDetails extends AppCompatActivity {
         if (userEmail.getText() != null) {
             String emailValue = userEmail.getText().toString().trim();
             if (emailValue.equals(""))
-                userEmail.setError("City name should not be empty");
+                userEmail.setError("EmailID should not be empty");
             else if (!emailPattern.matcher(emailValue).matches())
-                userEmail.setError("No special characters allowed in city name");
+                userEmail.setError("PLease enter a proper emailID");
             else {
                 userEmail.setError(null);
                 emailOK = true;

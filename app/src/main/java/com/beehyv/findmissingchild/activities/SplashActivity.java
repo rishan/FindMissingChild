@@ -19,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         Boolean isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(getApplicationContext(), Utils.PREFERENCES_FILE));
         Intent introIntent = new Intent(getApplicationContext(), PagerActivity.class);
         introIntent.putExtra(Utils.PREFERENCES_FILE, isUserFirstTime);
+        introIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         if (isUserFirstTime) {
             startActivity(introIntent);
             finish();

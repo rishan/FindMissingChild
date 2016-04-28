@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:id="@+id/nav_item"
     android:padding="10dp" >
 
     <ImageView

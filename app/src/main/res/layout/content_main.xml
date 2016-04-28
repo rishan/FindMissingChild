@@ -9,10 +9,17 @@
     android:id="@+id/drawer_layout">
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ScrollView
+        android:layout_height="match_parent"
+        android:id="@+id/frame_layout">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:isScrollContainer="false"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/scrollView">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,9 +47,8 @@
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:paddingLeft="20dp"
-                android:background="@drawable/edit_text_layout"
-                android:textColor="@color/appGreen"
-                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textColorHint="@color/translucentWhite"
                 android:id="@+id/caption"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,9 +69,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/location"
                         android:textSize="16sp"
-                        android:background="@drawable/edit_text_layout"
-                        android:textColor="@color/appGreen"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/translucentWhite"
                         android:id="@+id/location"/>
                 </LinearLayout>
                 <LinearLayout
@@ -87,9 +92,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:textSize="16sp"
-                        android:background="@drawable/edit_text_layout"
-                        android:textColor="@color/appGreen"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/translucentWhite"
                         android:id="@+id/name"/>
                 </LinearLayout>
                 <LinearLayout
@@ -113,7 +117,7 @@
                         android:textSize="16sp"
                         android:background="@drawable/edit_text_layout"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/appGreen"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/white"
                         android:id="@+id/age"
                         />
@@ -139,7 +143,7 @@
                         android:textSize="16sp"
                         android:background="@drawable/edit_text_layout"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/appGreen"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/white"
                         android:id="@+id/gender"/>
                     <LinearLayout
@@ -206,9 +210,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/missing_from"
                         android:textSize="16sp"
-                        android:background="@drawable/edit_text_layout"
-                        android:textColor="@color/appGreen"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/translucentWhite"
                         android:id="@+id/missing_from"/>
                 </LinearLayout>
                 <LinearLayout
@@ -229,10 +232,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comments"
-                        android:background="@drawable/edit_text_layout"
                         android:textSize="16sp"
-                        android:textColor="@color/appGreen"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/translucentWhite"
                         android:id="@+id/comments"/>
                 </LinearLayout>
 
@@ -240,20 +242,15 @@
 
         </LinearLayout>
         </ScrollView>
-        <LinearLayout
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom">
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/appGreen"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:id="@+id/form_submit"
-                android:text="SUBMIT"/>
-        </LinearLayout>
+            android:background="@color/appGreen"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/form_submit"
+            android:text="SUBMIT"/>
+        </RelativeLayout>
     </FrameLayout>
     <ListView
         android:id="@+id/left_drawer"
