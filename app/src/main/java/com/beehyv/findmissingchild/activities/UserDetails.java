@@ -1,6 +1,9 @@
 package com.beehyv.findmissingchild.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +51,27 @@ public class UserDetails extends AppCompatActivity {
                     editor.putString("userDetails",userDataStorage);
                     editor . commit ();
                     //TODO send to backend
+
+                    //Alert Dialog
+                    AlertDialog.Builder builder = new AlertDialog.Builder(UserDetails.this);
+                    builder.setMessage("Profile Submitted Successfully");
+                    builder.setPositiveButton("ADD NEW", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    });
+                    builder.setNegativeButton("GOTO LIST", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(getApplicationContext(), AddedChildren.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
                 }
 
             }
@@ -67,6 +91,7 @@ public class UserDetails extends AppCompatActivity {
         userPhone.setOnFocusChangeListener(ofcl);
 */
     }
+
     private boolean validateForm() {
         boolean nameOK = false;
         boolean phoneOK = false;
@@ -82,7 +107,7 @@ public class UserDetails extends AppCompatActivity {
                 userEmail.requestFocus();
             }
             else if (!emailPattern.matcher(emailValue).matches()) {
-                userEmail.setError("PLease enter a proper emailID");
+                userEmail.setError("Please enter a proper emailID");
                 userEmail.requestFocus();
             }
             else {
@@ -126,5 +151,6 @@ public class UserDetails extends AppCompatActivity {
         else
             return false;
     }
+
 }
 

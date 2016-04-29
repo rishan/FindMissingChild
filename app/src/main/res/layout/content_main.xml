@@ -29,7 +29,7 @@
             layout="@layout/app_toolbar" />-->
             <android.support.v7.widget.RecyclerView
                 android:layout_width="wrap_content"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:orientation="horizontal"
                 android:id="@+id/images">
@@ -44,9 +44,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/caption"
-                android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/translucentWhite"
                 android:id="@+id/caption"/>
@@ -54,22 +55,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="15dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="15dp"
+                    android:paddingRight="10dp"
                     android:paddingLeft="20dp"
                     android:id="@+id/location_row">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/location_icon"/>
-                    <EditText
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/location"
-                        android:textSize="16sp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/appGreen"
+                        android:background="@drawable/edit_text_layout"
                         android:textColorHint="@color/translucentWhite"
                         android:id="@+id/location"/>
                 </LinearLayout>
@@ -77,18 +79,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="15dp"
                     android:paddingBottom="15dp"
+                    android:paddingRight="10dp"
                     android:paddingLeft="20dp"
                     android:id="@+id/name_row">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="10dp"
                         android:src="@drawable/user_icon"/>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:textSize="16sp"
@@ -100,18 +102,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
                     android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
                     android:id="@+id/age_row">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="10dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/age_range_icon"/>
                     <Spinner
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/age_range"
                         android:textSize="16sp"
@@ -122,18 +123,23 @@
                         android:id="@+id/age"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="53dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/white"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="10dp"
                     android:paddingLeft="20dp"
                     android:id="@+id/gender_row">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginRight="23dp"
+                        android:layout_marginRight="13dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/gender_icon"/>
                     <TextView
@@ -150,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="8dp"
                         android:id="@+id/gender_selection">
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -174,7 +180,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="10dp"
                             android:id="@+id/gender_female">
                             <ImageView
                                 android:layout_width="70dp"
@@ -195,18 +202,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="15dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="15dp"
                     android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
                     android:id="@+id/missing_from_row">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="10dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/missing_from_icon"/>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/missing_from"
                         android:textSize="16sp"
@@ -218,18 +226,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
                     android:id="@+id/comments_row">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="10dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/comments_icon"/>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/comments"
                         android:textSize="16sp"
