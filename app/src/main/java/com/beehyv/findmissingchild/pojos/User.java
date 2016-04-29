@@ -5,7 +5,7 @@ package com.beehyv.findmissingchild.pojos;
  */
 public class User {
     private String name;
-    private int phoneNumber;
+    private long phoneNumber;
     private String emailID;
     private String uuid;
 
@@ -13,17 +13,17 @@ public class User {
 
     }
 
-    public User(String name, int phoneNumber, String emailID) {
+    public User(String name, long phoneNumber, String emailID) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailID = emailID;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

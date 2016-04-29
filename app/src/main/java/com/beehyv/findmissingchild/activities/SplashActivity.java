@@ -22,11 +22,9 @@ public class SplashActivity extends AppCompatActivity {
         introIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         if (isUserFirstTime) {
             startActivity(introIntent);
-            finish();
         }else {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            finish();
         }
     }
 }

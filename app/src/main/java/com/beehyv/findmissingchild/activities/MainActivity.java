@@ -1,8 +1,10 @@
 package com.beehyv.findmissingchild.activities;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
     * gender=false ---> Female
     */
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
 
         //Age Range Selection
         Spinner age= (Spinner)findViewById(R.id.age);
+        age.setPopupBackgroundResource(R.drawable.spinner);
         ArrayAdapter<CharSequence> ageAdapter = ArrayAdapter.createFromResource(this,
                 R.array.age_options, R.layout.spinner_layout);
         adapter.setDropDownViewResource(R.layout.dropdown_layout);
