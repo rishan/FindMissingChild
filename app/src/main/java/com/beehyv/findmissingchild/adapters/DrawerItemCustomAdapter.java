@@ -37,16 +37,17 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View listItem;
+        View listItem = convertView;
 
-        LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-        listItem = inflater.inflate(layoutResourceId, parent, false);
+        if (convertView == null) {
+            LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
+            listItem = inflater.inflate(layoutResourceId, parent, false);
+        }
 
         ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
         TextView textViewName = (TextView) listItem.findViewById(R.id.textViewName);
 
         ObjectDrawerItem folder = data[position];
-
 
         imageViewIcon.setImageResource(folder.icon);
         textViewName.setText(folder.name);

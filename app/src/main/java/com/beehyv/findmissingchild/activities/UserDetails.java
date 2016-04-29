@@ -1,11 +1,8 @@
 package com.beehyv.findmissingchild.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,10 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.beehyv.findmissingchild.R;
-import com.beehyv.findmissingchild.pojos.UserData;
+import com.beehyv.findmissingchild.pojos.User;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 public class UserDetails extends AppCompatActivity {
@@ -44,7 +39,7 @@ public class UserDetails extends AppCompatActivity {
                     String name=userName.getText().toString().trim();
                     int phoneNumber=Integer.parseInt(userPhone.getText().toString());
                     String emailID=userEmail.getText().toString().trim();
-                    UserData userData=new UserData(name,phoneNumber,emailID);
+                    User user =new User(name,phoneNumber,emailID);
 
                     //saving userData to SharedPreferences
                     String userDataStorage="{name:"+name+",phoneNumber:"+ Integer.toString(phoneNumber)+",emailID:"+emailID+"}";

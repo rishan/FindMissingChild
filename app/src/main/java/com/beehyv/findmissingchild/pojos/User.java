@@ -3,12 +3,17 @@ package com.beehyv.findmissingchild.pojos;
 /**
  * Created by rishan on 27/4/16.
  */
-public class UserData {
+public class User {
     private String name;
     private int phoneNumber;
     private String emailID;
+    private String uuid;
 
-    public UserData(String name, int phoneNumber, String emailID) {
+    public User() {
+
+    }
+
+    public User(String name, int phoneNumber, String emailID) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailID = emailID;
@@ -38,4 +43,11 @@ public class UserData {
         this.emailID = emailID;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 }

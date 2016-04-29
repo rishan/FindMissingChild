@@ -7,16 +7,18 @@ import android.graphics.Bitmap;
  */
 public class ChildDetails {
 
-    private String location;
+    private String locationFound;
     private String name;
-    private String ageRange;
+    private RangeChoices ageRange;
     //gender=true ---> Male
     private boolean gender;
     private String missingFrom;
     private Bitmap[] images;
 
-    public ChildDetails(String location, String name, String ageRange, boolean gender, String missingFrom, Bitmap[] images) {
-        this.location = location;
+    public ChildDetails() {}
+
+    public ChildDetails(String location, String name, RangeChoices ageRange, boolean gender, String missingFrom, Bitmap[] images) {
+        this.locationFound = location;
         this.name = name;
         this.ageRange = ageRange;
         this.gender = gender;
@@ -24,12 +26,12 @@ public class ChildDetails {
         this.images = images;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocationFound() {
+        return locationFound;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationFound(String location) {
+        this.locationFound = location;
     }
 
     public String getName() {
@@ -40,11 +42,11 @@ public class ChildDetails {
         this.name = name;
     }
 
-    public String getAgeRange() {
+    public RangeChoices getAgeRange() {
         return ageRange;
     }
 
-    public void setAgeRange(String ageRange) {
+    public void setAgeRange(RangeChoices ageRange) {
         this.ageRange = ageRange;
     }
 
@@ -72,4 +74,22 @@ public class ChildDetails {
         this.images = images;
     }
 
+}
+
+enum RangeChoices {
+
+    ZERO_TO_FIVE(0),
+    FIVE_TO_TEN(1),
+    TEN_TO_FIFTEEN(2),
+    FIFTEEN_TO_TWENTY(3);
+
+    private final int id;
+
+    RangeChoices(int id) {
+        this.id = id;
+    }
+
+    public int getValue() {
+        return id;
+    }
 }

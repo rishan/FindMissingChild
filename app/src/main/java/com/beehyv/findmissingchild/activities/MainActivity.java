@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // first call should be to open camera
+        if(imageList.isEmpty())
+            loadCamera();
         setContentView(R.layout.activity_main);
         getWindow().setBackgroundDrawableResource(R.drawable.splash_blurred);
         setTitle("Missing Child");
@@ -65,9 +68,7 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.inte
         /*TextView title=(TextView)findViewById(R.id.title);
         title.setText("Find Missing Child");*/
         mTitle = mDrawerTitle = getTitle();
-        imageList=new ArrayList<>();
-        if(imageList.isEmpty())
-            loadCamera();
+
         //Image population
         recyclerView = (RecyclerView) findViewById(R.id.images);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);

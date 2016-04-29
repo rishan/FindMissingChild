@@ -34,7 +34,7 @@ public class ChildrenAdapter extends RecyclerView.Adapter<ChildrenAdapter.Custom
     public void onBindViewHolder(CustomChildrenViewHolder holder, int position) {
         ChildDetails currentChildDetails=childrenList.get(position);
         holder.childName.setText(currentChildDetails.getName());
-        holder.childAge.setText(currentChildDetails.getAgeRange());
+        // holder.childAge.setText(currentChildDetails.getAgeRange());
         holder.childMissingFrom.setText(currentChildDetails.getMissingFrom());
         holder.childImage.setImageBitmap(currentChildDetails.getImages()[0]);
     }
